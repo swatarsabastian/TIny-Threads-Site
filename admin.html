@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TINYTHREADS Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <nav class="nav container">
+      <div class="logo">TINYTHREADS Admin</div>
+      <div class="nav-group">
+        <a class="nav-cta" href="/home">Home</a>
+        <a class="nav-cta" href="/shop">Shop</a>
+        <a class="nav-cta" href="/cart">Cart</a>
+        <a class="nav-cta" href="/orders">Orders</a>
+        <a class="nav-cta" href="/admin">Admin</a>
+      </div>
+    </nav>
+    <div class="hero-content container">
+      <h1>Inventory Management</h1>
+      <p class="hero-text">Log in as admin to add, edit, update, and delete listings.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Admin Login</h2>
+      <form id="adminLoginForm" class="stack">
+        <input type="email" name="email" placeholder="Admin email" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button class="btn btn-order" type="submit">Login</button>
+      </form>
+      <div class="inline-actions">
+        <span id="adminStatusText">Not logged in</span>
+        <button id="adminLogoutBtn" type="button" class="btn btn-secondary">Logout</button>
+      </div>
+      <div id="adminStatus" class="status-message"></div>
+    </section>
+
+    <section class="card">
+      <h2>Add Inventory Item</h2>
+      <form id="productForm" class="stack">
+        <input name="name" placeholder="Product name" required>
+        <textarea name="description" placeholder="Description" required></textarea>
+        <input name="price" type="number" min="1" placeholder="Price" required>
+        <input name="image_url" type="url" placeholder="Image URL" required>
+        <input name="stock" type="number" min="0" placeholder="Stock" required>
+        <label><input name="is_active" type="checkbox" checked> Active listing</label>
+        <button class="btn btn-order" type="submit">Add Product</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>Inventory List</h2>
+      <div id="adminProductList" class="stack"></div>
+    </section>
+
+    <section class="card">
+      <h2>Low Stock Alert (<=5)</h2>
+      <div id="lowStockList" class="stack"></div>
+    </section>
+
+    <section class="card">
+      <h2>Recent Orders</h2>
+      <div id="adminOrderList" class="stack"></div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
